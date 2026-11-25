@@ -1,0 +1,4 @@
+bin/
+obj/
+.vs/
+mkvCutter.settings.json
