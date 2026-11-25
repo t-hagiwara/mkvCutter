@@ -6,6 +6,7 @@
         Height="820"
         MinWidth="650"
         MinHeight="620"
+        Icon="pack://application:,,,/assets/mkv-cutter_icon.png"
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource SurfaceBrush}"
         Loaded="Window_Loaded"
