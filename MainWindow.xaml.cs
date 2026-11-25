@@ -320,12 +320,6 @@ public partial class MainWindow : Window
             {
                 AppendLog("切り出しが完了しました。");
                 SetStatus("完了しました。");
-                MessageBox.Show(
-                    this,
-                    $"切り出しが完了しました。\n\n{outputPath}",
-                    "完了",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
             }
             else
             {
