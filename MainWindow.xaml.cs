@@ -23,6 +23,10 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+
+        var version = GetType().Assembly.GetName().Version
+            ?? throw new InvalidOperationException("アプリのバージョンを取得できません。");
+        Title = $"MKV Cutter v{version.ToString(3)}";
     }
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
