@@ -6,6 +6,8 @@ using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using Microsoft.Win32;
 
 namespace MkvCutter;
@@ -204,6 +206,35 @@ public partial class MainWindow : Window
             $"{Path.GetFileNameWithoutExtension(filePath)}_cut.mkv");
         StartButton.IsEnabled = File.Exists(filePath);
         SetStatus("入力動画を設定しました。");
+    }
+
+    private void VideoPath_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        if (e.ClickCount != 2 || sender is not TextBox pathTextBox)
+        {
+            return;
+        }
+
+        var path = pathTextBox.Text;
+        if (!File.Exists(path))
+        {
+            return;
+        }
+
+        try
+        {
+            Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
+        }
+        catch (Exception ex) when (
+            ex is Win32Exception or InvalidOperationException or IOException or UnauthorizedAccessException)
+        {
+            MessageBox.Show(
+                this,
+                $"既定のプレイヤーで動画を開けませんでした。\n\n{path}\n{ex.Message}",
+                "動画を開けません",
+                MessageBoxButton.OK,
+                MessageBoxImage.Warning);
+        }
     }
 
     private void BrowseOutput_Click(object sender, RoutedEventArgs e)

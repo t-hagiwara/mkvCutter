@@ -44,7 +44,8 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="InputPathTextBox" IsReadOnly="True"
-                             Background="#F8FAFC" />
+                             Background="#F8FAFC"
+                             PreviewMouseLeftButtonDown="VideoPath_PreviewMouseLeftButtonDown" />
                     <Button Grid.Column="1" Margin="10,0,0,0" MinWidth="92"
                             Content="参照..." Click="BrowseInput_Click" />
                 </Grid>
@@ -98,7 +99,8 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="OutputPathTextBox" />
+                    <TextBox x:Name="OutputPathTextBox"
+                             PreviewMouseLeftButtonDown="VideoPath_PreviewMouseLeftButtonDown" />
                     <Button Grid.Column="1" Margin="10,0,0,0" MinWidth="92"
                             Content="保存先..." Click="BrowseOutput_Click" />
                 </Grid>
