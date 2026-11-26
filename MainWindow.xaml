@@ -120,9 +120,17 @@
                     Click="Cancel_Click" />
             <Button x:Name="StartButton" Grid.Column="2" Margin="8,0,0,0"
                     MinWidth="132" IsEnabled="False"
-                    Style="{StaticResource AccentButtonStyle}"
                     FontWeight="SemiBold"
                     Click="Start_Click">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource AccentButtonStyle}">
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="True">
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
                 <TextBlock Text="切り出し開始" Foreground="White" />
             </Button>
         </Grid>
